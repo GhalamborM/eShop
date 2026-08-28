@@ -23,10 +23,12 @@ if (!app.Environment.IsDevelopment())
 
 app.UseAntiforgery();
 
+app.UseHttpsRedirection();
+
 app.UseStaticFiles();
 
 app.MapRazorComponents<App>().AddInteractiveServerRenderMode();
 
-app.MapForwarder("/product-images/{id}", "http://catalog-api", "/api/catalog/items/{id}/pic");
+app.MapForwarder("/product-images/{id}", "https+http://catalog-api", "/api/catalog/items/{id}/pic");
 
 app.Run();
